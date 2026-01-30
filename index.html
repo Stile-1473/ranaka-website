@@ -20,9 +20,13 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-weight='bold' fill='%231E6F5C'>⚖</text></svg>" />
     
-    <!-- Preload fonts for better performance -->
+    <!-- Google Fonts - Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Main app root -->
@@ -30,5 +34,23 @@
     
     <!-- Application entry point -->
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Initialize AOS -->
+    <script>
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+        script.onload = () => {
+          if (typeof AOS !== 'undefined') {
+            AOS.init({
+              duration: 800,
+              once: true,
+              offset: 100,
+            });
+          }
+        };
+        document.head.appendChild(script);
+      }, 100);
+    </script>
   </body>
 </html>

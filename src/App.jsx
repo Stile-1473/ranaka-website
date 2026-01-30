@@ -1,61 +1,52 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Navigation from './components/layout/Navigation';
-import Footer from './components/layout/Footer';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import WhyChooseUs from './components/WhyChooseUs';
+import Team from './components/Team';
+import Testimonials from './components/Testimonials';
+import CTA from './components/CTA';
+import AboutPage from './components/AboutPage';
+import ServicesPage from './components/ServicesPage';
+import TeamPage from './components/TeamPage';
+import ContactPage from './components/ContactPage';
 
-// Page Components
-import Home from './components/pages/Home';
-import AboutUs from './components/pages/AboutUs';
-import LegalServices from './components/pages/LegalServices';
-import GetLegalHelp from './components/pages/GetLegalHelp';
-import OurTeam from './components/pages/OurTeam';
-import Resources from './components/pages/Resources';
-import ContactUs from './components/pages/ContactUs';
-
-// Scroll to top on route change
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Services />
+      <WhyChooseUs />
+      <Team />
+      <Testimonials />
+      <CTA />
+    </>
+  );
 }
 
-/**
- * App Component - Main routing and layout wrapper
- * Ranaka Legal Aid Trust Website
- * 
- * Professional, responsive law firm website with:
- * - React Router for page navigation
- * - Tailwind CSS for styling
- * - Responsive design (mobile-first)
- * - Accessible components
- * - SEO-optimized structure
- */
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white">
-        <Navigation />
-        <main className="flex-grow">
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/services" element={<LegalServices />} />
-            <Route path="/get-help" element={<GetLegalHelp />} />
-            <Route path="/team" element={<OurTeam />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
 export default App;
+

@@ -1,65 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
-/* Custom Ranaka Legal Aid Trust styling */
-:root {
-  --color-primary: #1E6F5C;
-  --color-secondary: #FFFFFF;
+@theme {
+  --color-primary: #0D4F3C;
+  --color-primary-light: #1A6B52;
+  --color-primary-dark: #063D2C;
   --color-accent: #C9A227;
-  --color-text-dark: #1F2937;
-  --color-text-light: #6B7280;
+  --color-accent-light: #D4B84A;
+  --color-accent-dark: #A68620;
+  --color-secondary: #FFFFFF;
+  --color-text-dark: #1A1A2E;
+  --color-text-medium: #4A5568;
+  --color-text-light: #718096;
+  --color-cream: #FEFDF5;
+  --color-bg-light: #F8FAFC;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  color: var(--color-text-dark);
-  background-color: #FFFFFF;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
   }
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
