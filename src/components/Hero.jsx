@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Award, Users } from 'lucide-react';
 
 const Hero = () => {
@@ -102,21 +103,25 @@ At Ranaka Legal Aid Trust, we provide world-class legal solutions tailored to yo
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <motion.button
-                className="group px-8 py-4 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(201, 162, 39, 0.4)' }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get Free Consultation
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300"
-                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
-                whileTap={{ scale: 0.98 }}
-              >
-                View Our Services
-              </motion.button>
+              <Link to="/contact">
+                <motion.button
+                  className="group px-8 py-4 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(201, 162, 39, 0.4)' }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Get Free Consultation
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </motion.button>
+              </Link>
+              <Link to="/services">
+                <motion.button
+                  className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300"
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  View Our Services
+                </motion.button>
+              </Link>
             </motion.div>
 
             {/* Stats */}
