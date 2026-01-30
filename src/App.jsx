@@ -32,20 +32,24 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Force scroll to top on route change with multiple attempts
+    // Disable browser's automatic scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Force scroll to top on route change
     const scrollToTop = () => {
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     };
 
-    // Immediate scroll
-    scrollToTop();
-
-    // Additional scroll after a short delay to ensure it works
-    const timeoutId = setTimeout(scrollToTop, 10);
-
-    return () => clearTimeout(timeoutId);
+    // Use requestAnimationFrame for better timing
+    requestAnimationFrame(() => {
+      scrollToTop();
+      // Additional scroll after a short delay
+      setTimeout(scrollToTop, 10);
+    });
   }, [pathname]);
 
   return null;
@@ -74,4 +78,3 @@ function App() {
 }
 
 export default App;
-
